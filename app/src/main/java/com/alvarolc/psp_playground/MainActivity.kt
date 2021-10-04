@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             //launchInsideThread2()
             //postDelayed()
             //progressBar
-            progressBar2()
+            progressBarWhileCounting()
         }
     }
 
@@ -186,7 +186,7 @@ class MainActivity : AppCompatActivity() {
         }).start()
     }
 
-    private fun progressBar2() {
+    private fun progressBarWhileCounting() {
         Thread(Runnable {
             for (i in 1..10) {
                 runOnUiThread {
