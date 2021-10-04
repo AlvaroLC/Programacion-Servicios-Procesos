@@ -2,14 +2,20 @@ package com.alvarolc.psp_playground
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.Spinner
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var label: TextView
     lateinit var button: Button
+    lateinit var spinner: ProgressBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupView() {
         label = findViewById(R.id.label)
+        spinner = findViewById(R.id.spinner)
         button = findViewById(R.id.button)
         button.setOnClickListener {
             //launchARN()
@@ -29,7 +36,9 @@ class MainActivity : AppCompatActivity() {
             //threadFromParam()
             //launchMultipleThreads()
             //launchInsideThread()
-            launchInsideThread2()
+            //launchInsideThread2()
+            //postDelayed()
+            progressBar()
         }
     }
 
@@ -149,5 +158,31 @@ class MainActivity : AppCompatActivity() {
         }).start()
     }
 
+    //Hilo con delay
+
+    private fun postDelayed(){
+        Handler(Looper.getMainLooper()).postDelayed({
+            label.text = "Hola!!"
+        }, 3000)
+    }
+
+    private fun progressBar() {
+        Thread(Runnable {
+            for (i in 1..10) {
+                runOnUiThread {
+                    label.text = "Hola $i"
+                }
+                Thread.sleep(1000)
+            }
+
+            runOnUiThread{
+                spinner.visibility = View.VISIBLE
+            }
+            Handler(Looper.getMainLooper()).postDelayed({
+                spinner.visibility = View.GONE
+            }, 3000)
+
+        }).start()
+    }
 
 }
