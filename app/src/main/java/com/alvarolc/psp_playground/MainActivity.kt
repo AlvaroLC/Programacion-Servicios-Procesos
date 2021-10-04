@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
             //launchInsideThread()
             //launchInsideThread2()
             //postDelayed()
-            progressBar()
+            //progressBar
+            progressBar2()
         }
     }
 
@@ -181,6 +182,24 @@ class MainActivity : AppCompatActivity() {
             Handler(Looper.getMainLooper()).postDelayed({
                 spinner.visibility = View.GONE
             }, 3000)
+
+        }).start()
+    }
+
+    private fun progressBar2() {
+        Thread(Runnable {
+            for (i in 1..10) {
+                runOnUiThread {
+                    label.text = "Hola $i"
+                    spinner.visibility = View.VISIBLE
+                }
+                Thread.sleep(1000)
+            }
+
+            runOnUiThread{
+                spinner.visibility = View.GONE
+            }
+
 
         }).start()
     }
