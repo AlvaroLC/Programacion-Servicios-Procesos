@@ -34,16 +34,16 @@ class Exercise02Activity : AppCompatActivity() {
 
     private fun runRepository(actionId: Int) {
         //obtengo la abstracción del ApiClient a usar
-        val apiClient = apiClientFactory.build(actionId)
+        val apiRepository = UserRepository(apiClientFactory.build(actionId))
 
         //Visualizo el listado de usuarios
-        val users = apiClient.getUsers()
+        val users = apiRepository.getUsers()
         users.forEach { userApiModel ->
             Log.d(TAG, "$userApiModel")
         }
 
         //Obtengo un usuario y visualizo el usuario
-        val user = apiClient.getUser(1)
+        val user = apiRepository.getUser(1)
         user?.run {
             Log.d(TAG, "$this")
         }

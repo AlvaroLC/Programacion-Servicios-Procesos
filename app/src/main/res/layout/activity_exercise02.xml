@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ut02.NetworkActivity">
+    tools:context=".ut02.folder.data.Exercise02Activity">
 
     <Button
         android:id="@+id/action_mock"
