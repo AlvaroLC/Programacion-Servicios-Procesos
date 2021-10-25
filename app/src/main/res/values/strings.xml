@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PSP-Playground</string>
+    <string name="action_mock">Mock</string>
+    <string name="action_api">API</string>
 </resources>

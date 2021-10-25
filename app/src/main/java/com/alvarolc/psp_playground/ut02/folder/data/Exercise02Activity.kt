@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import com.alvarolc.psp_playground.R
+import com.alvarolc.psp_playground.ut02.folder.ApiClientFactory
 
 class Exercise02Activity : AppCompatActivity() {
 
@@ -24,11 +25,11 @@ class Exercise02Activity : AppCompatActivity() {
         actionMock.setOnClickListener {
             runRepository(it.id)
         }
-
+/**
         val actionApi: Button = findViewById(R.id.action_api)
         actionApi.setOnClickListener {
             runRepository(it.id)
-        }
+        }*/
     }
 
     private fun runRepository(actionId: Int) {

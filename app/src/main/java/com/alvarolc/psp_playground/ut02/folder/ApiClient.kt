@@ -1,7 +1,10 @@
 package com.alvarolc.psp_playground.ut02.folder
 
+import com.alvarolc.psp_playground.ut02.folder.data.UserApiModel
+
 interface ApiClient {
     fun getUsers(): List<UserApiModel>
+    fun getUser(userId: Int): UserApiModel?
 }
 
 class MockApiClient : ApiClient {
@@ -14,4 +17,8 @@ class MockApiClient : ApiClient {
         )
     }
 
+    override fun getUser(userId: Int): UserApiModel {
+        return UserApiModel(1, "Usuario 1", "Usuario1", "user1@email.es")
+    }
 }
+
