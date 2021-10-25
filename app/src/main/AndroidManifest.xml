@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PSPPlayground">
         <activity
+            android:name=".ut02.folder.data.Exercise02Activity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity
