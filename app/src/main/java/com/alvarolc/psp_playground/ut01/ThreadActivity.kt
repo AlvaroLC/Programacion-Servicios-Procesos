@@ -169,6 +169,11 @@ class ThreadActivity : AppCompatActivity() {
 
     private fun progressBar() {
         Thread(Runnable {
+
+            runOnUiThread{
+                spinner.visibility = View.VISIBLE
+            }
+
             for (i in 1..10) {
                 runOnUiThread {
                     label.text = "Hola $i"
@@ -188,10 +193,12 @@ class ThreadActivity : AppCompatActivity() {
 
     private fun progressBarWhileCounting() {
         Thread(Runnable {
+            runOnUiThread{
+                spinner.visibility = View.VISIBLE
+            }
             for (i in 1..10) {
                 runOnUiThread {
                     label.text = "Hola $i"
-                    spinner.visibility = View.VISIBLE
                 }
                 Thread.sleep(1000)
             }
