@@ -7,6 +7,7 @@ class ApiClientFactory {
     fun build(actionId: Int): ApiClient =
         when (actionId) {
             R.id.action_mock -> MockApiClient()
+            R.id.action_api -> RetrofitApiClient()
             else -> MockApiClient()
         }
 }

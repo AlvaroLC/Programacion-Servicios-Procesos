@@ -25,11 +25,11 @@ class Exercise02Activity : AppCompatActivity() {
         actionMock.setOnClickListener {
             runRepository(it.id)
         }
-/**
+
         val actionApi: Button = findViewById(R.id.action_api)
         actionApi.setOnClickListener {
             runRepository(it.id)
-        }*/
+        }
     }
 
     private fun runRepository(actionId: Int) {
