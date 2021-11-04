@@ -33,19 +33,22 @@ class Exercise02Activity : AppCompatActivity() {
     }
 
     private fun runRepository(actionId: Int) {
-        //obtengo la abstracción del ApiClient a usar
-        val apiRepository = UserRepository(apiClientFactory.build(actionId))
 
-        //Visualizo el listado de usuarios
-        val users = apiRepository.getUsers()
-        users.forEach { userApiModel ->
-            Log.d(TAG, "$userApiModel")
-        }
+        val threadNetwotk = Thread(Runnable {
+            //obtengo la abstracción del ApiClient a usar
+            val apiRepository = UserRepository(apiClientFactory.build(actionId))
+            //Visualizo el listado de usuarios
+            val users = apiRepository.getUsers()
+            users.forEach { userApiModel ->
+                Log.d(TAG, "$userApiModel")
+            }
 
-        //Obtengo un usuario y visualizo el usuario
-        val user = apiRepository.getUser(1)
-        user?.run {
-            Log.d(TAG, "$this")
-        }
+            //Obtengo un usuario y visualizo el usuario
+            val user = apiRepository.getUser(1)
+            user?.run {
+                Log.d(TAG, "$this")
+            }
+        })
+        threadNetwotk.start()
     }
 }
