@@ -10,3 +10,5 @@ data class AlertModel(
     val source: String,
     val files: List<FileModel>
     )
+
+data class FileModel(val name: String, val url: String)

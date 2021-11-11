@@ -6,8 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.TextView
 import com.alvarolc.psp_playground.R
-import com.alvarolc.psp_playground.exercise_plagricola.app.MockApiClient
-import com.alvarolc.psp_playground.exercise_plagricola.app.RetrofitApiClient
+import com.alvarolc.psp_playground.exercise_plagricola.app.AlertRetrofitApiClient
 import com.alvarolc.psp_playground.exercise_plagricola.data.AlertDataRepository
 import com.alvarolc.psp_playground.exercise_plagricola.domain.GetAlertsUseCase
 import com.alvarolc.psp_playground.ut02.folder.data.Exercise02Activity
@@ -15,25 +14,31 @@ import com.alvarolc.psp_playground.exercise_plagricola.data.AlertRemoteSource
 
 class AlertActivity : AppCompatActivity() {
 
-    private val TAG: String = AlertActivity::class.java.simpleName
+        private val TAG: String = AlertActivity::class.java.simpleName
+        private val userRepository = AlertDataRepository(AlertRemoteSource(AlertRetrofitApiClient()))
 
-    private val alertViewModel : AlertViewModel=
-        AlertViewModel(GetAlertsUseCase(AlertDataRepository(AlertRemoteSource(RetrofitApiClient()))))
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            Thread {
+                runRepository()
+            }.start()
+        }
 
+        private fun runRepository() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        render()
+            //Visualizo el listado de alerts
+            val alerts = userRepository.getAlerts()
+            alerts.forEach { userApiModel ->
+                Log.d(TAG, "$userApiModel")
+            }
+
+            //Obtengo un usuario y visualizo el usuario
+            val alert = userRepository.getAlert("1671086")
+            alert?.run {
+                Log.d(TAG, "$this")
+            }
+
+        }
+
     }
-
-    private fun render() {
-        Thread {
-            val model = alertViewModel.getAlertModel()
-            Log.d(TAG, model.toString())
-        }.start()
-
-    }
-
-
-}
 
