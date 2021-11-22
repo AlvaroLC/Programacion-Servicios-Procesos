@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alvarolc.psp_playground">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,17 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PSPPlayground">
         <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ut01.ThreadActivity"
+            android:name=".ut02.folder.data.Exercise02Activity"
             android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name="com.alvarolc.psp_playground.exercise_plagricola.presentation.AlertActivity"
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ut01.ThreadActivity"
+            android:exported="true"/>
+
     </application>
 
 </manifest>
