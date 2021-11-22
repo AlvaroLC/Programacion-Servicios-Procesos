@@ -10,7 +10,7 @@ import com.alvarolc.psp_playground.exercise_plagricola.domain.GetAlertsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AlertViewModel() : ViewModel() {
+class AlertViewModel : ViewModel() {
 
     private val userRepository = AlertDataRepository(AlertRemoteSource(AlertRetrofitApiClient()))
     private val TAG: String = AlertActivity::class.java.simpleName
@@ -18,7 +18,7 @@ class AlertViewModel() : ViewModel() {
 
     fun getUserViewModelScope() {
 
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.IO) {
             //Visualizo el listado de alerts
             val alerts = userRepository.getAlerts()
             alerts.forEach { userApiModel ->
