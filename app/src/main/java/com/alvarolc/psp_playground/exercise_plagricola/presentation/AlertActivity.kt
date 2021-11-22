@@ -25,7 +25,7 @@ class AlertActivity : AppCompatActivity() {
     }
 
     private fun exampleCoroutines() {
-        viewModel.getUserViewModelScope()
+        viewModel.getAlertViewModelScope()
     }
 
 }

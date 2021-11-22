@@ -12,21 +12,21 @@ import kotlinx.coroutines.launch
 
 class AlertViewModel : ViewModel() {
 
-    private val userRepository = AlertDataRepository(AlertRemoteSource(AlertRetrofitApiClient()))
+    private val alertRepository = AlertDataRepository(AlertRemoteSource(AlertRetrofitApiClient()))
     private val TAG: String = AlertActivity::class.java.simpleName
 
 
-    fun getUserViewModelScope() {
+    fun getAlertViewModelScope() {
 
         viewModelScope.launch(Dispatchers.IO) {
             //Visualizo el listado de alerts
-            val alerts = userRepository.getAlerts()
-            alerts.forEach { userApiModel ->
-                Log.d(TAG, "$userApiModel")
+            val alerts = alertRepository.getAlerts()
+            alerts.forEach { alertApiModel ->
+                Log.d(TAG, "$alertApiModel")
             }
 
-            //Obtengo un usuario y visualizo el usuario
-            val alert = userRepository.getAlert("1671086")
+            //Obtengo una alerta y la visualizo
+            val alert = alertRepository.getAlert("1671086")
             alert?.run {
                 Log.d(TAG, "$this")
             }
