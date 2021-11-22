@@ -16,8 +16,6 @@ import kotlin.concurrent.thread
 
 class AlertActivity : AppCompatActivity() {
 
-    private val TAG: String = AlertActivity::class.java.simpleName
-    private val userRepository = AlertDataRepository(AlertRemoteSource(AlertRetrofitApiClient()))
     private val viewModel by viewModels<AlertViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
